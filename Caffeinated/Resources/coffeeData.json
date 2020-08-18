@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Coffee",
+        "espressoShots": 2,
+        "drinkSize": 8,
+        "id": 1001
+    },
+    {
+        "name": "Latte",
+        "espressoShots": 1,
+        "drinkSize": 8,
+        "id": 1002
+    },
+    {
+        "name": "Macchiato",
+        "espressoShots": 2,
+        "drinkSize": 8,
+        "id": 1003
+    },
+    {
+        "name": "Cappuccino",
+        "espressoShots": 2,
+        "drinkSize": 8,
+        "id": 1004
+    },
+    {
+        "name": "Americano",
+        "espressoShots": 2,
+        "drinkSize": 8,
+        "id": 1005
+    },
+    {
+        "name": "Espresso",
+        "espressoShots": 1,
+        "drinkSize": 8,
+        "id": 1006
+    },
+    {
+        "name": "Doppio",
+        "espressoShots": 2,
+        "drinkSize": 8,
+        "id": 1007
+    },
+    {
+        "name": "Flat White",
+        "espressoShots": 2,
+        "drinkSize": 8,
+        "id": 1008
+    },
+    {
+        "name": "Affogato",
+        "espressoShots": 1,
+        "drinkSize": 8,
+        "id": 1009
+    },
+    {
+        "name": "Mocha",
+        "espressoShots": 2,
+        "drinkSize": 8,
+        "id": 1010
+    }
+]

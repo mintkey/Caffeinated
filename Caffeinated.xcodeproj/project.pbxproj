@@ -7,9 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F29A74824E8FFBA00EFECC2 /* Coffee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F29A74724E8FFBA00EFECC2 /* Coffee.swift */; };
+		4F29A74D24E90E6400EFECC2 /* CoffeeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F29A74C24E90E6400EFECC2 /* CoffeeRow.swift */; };
+		4F29A74F24E9102300EFECC2 /* CoffeeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F29A74E24E9102300EFECC2 /* CoffeeDetail.swift */; };
+		4F29A75724E9A0C800EFECC2 /* coffeeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F29A75624E9A0C800EFECC2 /* coffeeData.json */; };
+		4F29A75924E9A19600EFECC2 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F29A75824E9A19600EFECC2 /* Data.swift */; };
+		4F29A75E24EA51E300EFECC2 /* FredokaOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F29A75C24EA51E300EFECC2 /* FredokaOne-Regular.ttf */; };
 		4FCBA2B824CAABC200195EA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBA2B724CAABC200195EA9 /* AppDelegate.swift */; };
 		4FCBA2BA24CAABC200195EA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBA2B924CAABC200195EA9 /* SceneDelegate.swift */; };
-		4FCBA2BC24CAABC200195EA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBA2BB24CAABC200195EA9 /* ContentView.swift */; };
+		4FCBA2BC24CAABC200195EA9 /* CoffeeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FCBA2BB24CAABC200195EA9 /* CoffeeList.swift */; };
 		4FCBA2BE24CAABC800195EA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBA2BD24CAABC800195EA9 /* Assets.xcassets */; };
 		4FCBA2C124CAABC800195EA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBA2C024CAABC800195EA9 /* Preview Assets.xcassets */; };
 		4FCBA2C424CAABC800195EA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FCBA2C224CAABC800195EA9 /* LaunchScreen.storyboard */; };
@@ -35,10 +41,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4F29A74724E8FFBA00EFECC2 /* Coffee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coffee.swift; sourceTree = "<group>"; };
+		4F29A74C24E90E6400EFECC2 /* CoffeeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeRow.swift; sourceTree = "<group>"; };
+		4F29A74E24E9102300EFECC2 /* CoffeeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeDetail.swift; sourceTree = "<group>"; };
+		4F29A75624E9A0C800EFECC2 /* coffeeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = coffeeData.json; sourceTree = "<group>"; };
+		4F29A75824E9A19600EFECC2 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		4F29A75C24EA51E300EFECC2 /* FredokaOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FredokaOne-Regular.ttf"; sourceTree = "<group>"; };
 		4FCBA2B424CAABC200195EA9 /* Caffeinated.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Caffeinated.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FCBA2B724CAABC200195EA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FCBA2B924CAABC200195EA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4FCBA2BB24CAABC200195EA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4FCBA2BB24CAABC200195EA9 /* CoffeeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeList.swift; sourceTree = "<group>"; };
 		4FCBA2BD24CAABC800195EA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FCBA2C024CAABC800195EA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4FCBA2C324CAABC800195EA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,6 +88,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F29A74A24E90CB200EFECC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4F29A74724E8FFBA00EFECC2 /* Coffee.swift */,
+				4F29A75824E9A19600EFECC2 /* Data.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4F29A74B24E90E3800EFECC2 /* Supporting Views */ = {
+			isa = PBXGroup;
+			children = (
+				4F29A74C24E90E6400EFECC2 /* CoffeeRow.swift */,
+			);
+			path = "Supporting Views";
+			sourceTree = "<group>";
+		};
+		4F29A75024E9172700EFECC2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4F29A75624E9A0C800EFECC2 /* coffeeData.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4F29A77124EA541200EFECC2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4F29A75C24EA51E300EFECC2 /* FredokaOne-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		4FCBA2AB24CAABC200195EA9 = {
 			isa = PBXGroup;
 			children = (
@@ -99,13 +144,18 @@
 		4FCBA2B624CAABC200195EA9 /* Caffeinated */ = {
 			isa = PBXGroup;
 			children = (
+				4F29A77124EA541200EFECC2 /* Fonts */,
+				4F29A75024E9172700EFECC2 /* Resources */,
+				4F29A74B24E90E3800EFECC2 /* Supporting Views */,
 				4FCBA2B724CAABC200195EA9 /* AppDelegate.swift */,
 				4FCBA2B924CAABC200195EA9 /* SceneDelegate.swift */,
-				4FCBA2BB24CAABC200195EA9 /* ContentView.swift */,
+				4FCBA2BB24CAABC200195EA9 /* CoffeeList.swift */,
+				4F29A74E24E9102300EFECC2 /* CoffeeDetail.swift */,
 				4FCBA2BD24CAABC800195EA9 /* Assets.xcassets */,
 				4FCBA2C224CAABC800195EA9 /* LaunchScreen.storyboard */,
 				4FCBA2C524CAABC800195EA9 /* Info.plist */,
 				4FCBA2BF24CAABC800195EA9 /* Preview Content */,
+				4F29A74A24E90CB200EFECC2 /* Models */,
 			);
 			path = Caffeinated;
 			sourceTree = "<group>";
@@ -241,8 +291,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FCBA2C424CAABC800195EA9 /* LaunchScreen.storyboard in Resources */,
+				4F29A75724E9A0C800EFECC2 /* coffeeData.json in Resources */,
 				4FCBA2C124CAABC800195EA9 /* Preview Assets.xcassets in Resources */,
 				4FCBA2BE24CAABC800195EA9 /* Assets.xcassets in Resources */,
+				4F29A75E24EA51E300EFECC2 /* FredokaOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,9 +319,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F29A75924E9A19600EFECC2 /* Data.swift in Sources */,
+				4F29A74F24E9102300EFECC2 /* CoffeeDetail.swift in Sources */,
 				4FCBA2B824CAABC200195EA9 /* AppDelegate.swift in Sources */,
 				4FCBA2BA24CAABC200195EA9 /* SceneDelegate.swift in Sources */,
-				4FCBA2BC24CAABC200195EA9 /* ContentView.swift in Sources */,
+				4F29A74D24E90E6400EFECC2 /* CoffeeRow.swift in Sources */,
+				4FCBA2BC24CAABC200195EA9 /* CoffeeList.swift in Sources */,
+				4F29A74824E8FFBA00EFECC2 /* Coffee.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
