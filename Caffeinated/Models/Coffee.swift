@@ -14,14 +14,32 @@ struct Coffee: Hashable, Codable, Identifiable {
     var drinkSize: DrinkSize
     var espressoShots: EspressoShots
     
-    enum DrinkSize: Int, CaseIterable, Codable, Hashable {
-        case small = 8
-        case medium = 16
-        case large = 32
+    enum DrinkSize: String, CaseIterable, Codable, Hashable {
+        case small = "Small"
+        case medium = "Medium"
+        case large = "Large"
     }
     
-    enum EspressoShots: Int, CaseIterable, Codable, Hashable {
-        case single = 1
-        case double = 2
+    enum EspressoShots: String, CaseIterable, Codable, Hashable {
+        case single = "Single"
+        case double = "Double"
+        case triple = "Triple"
+    }
+}
+
+struct CaffeineResults: Codable, Hashable  {
+    enum CaffeineAmount: String, CaseIterable, Codable, Hashable {
+        case justRight = "👍", tooMuch = "😰", notEnough = "🥱"
+        
+         var caption: String {
+            switch self {
+            case .justRight:
+                return "Just right!"
+            case .tooMuch:
+                return "Too much!"
+            case .notEnough:
+                return "Not enough!"
+            }
+        }
     }
 }

@@ -12,6 +12,8 @@ struct ColorPalette {
     static let elfGreen = Color("elfGreen")
     static let headerMint = Color("headerMint")
     static let primaryMint = Color("primaryMint")
+    static let vistaBlue = Color("vistaBlue")
+    static let gossamer = Color("gossamer")
 }
 
 struct CoffeeList: View {
@@ -35,6 +37,7 @@ struct CoffeeList: View {
                 }
             }
             .navigationBarTitle(Text("Choose a drink"))
+            .font(.system(.body, design: .rounded))
             .foregroundColor(ColorPalette.primaryMint)
         }
     }
