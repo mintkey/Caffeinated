@@ -8,6 +8,14 @@
 
 import SwiftUI
 
+// MARK: - ObservableObject
+// CoffeeSelections class is typed ObservableObject so that mutated variables can be accessed across multiple views
+class CoffeeSelections: ObservableObject {
+    @Published var drinkSizeSelected: Coffee.DrinkSize = .small
+    @Published var espressoShotsSelected: Coffee.EspressoShots = .single
+}
+
+// TODO: Make custom styling remain on selection, not just on press
 struct CustomButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
@@ -18,73 +26,70 @@ struct CustomButtonStyle: ButtonStyle {
     }
 }
 
-class Selections: ObservableObject {
-    @Published var drinkSizeSelected: Coffee.DrinkSize = .small
-    @Published var espressoShotsSelected: Coffee.EspressoShots = .single
-}
-
 struct CoffeeDetail: View {
     var coffee: Coffee
-    @ObservedObject var selections = Selections()
+    @ObservedObject var coffeeSelections = CoffeeSelections()
     
     var body: some View {
         ZStack {
+            // Applies background color to entire view
             ColorPalette.elfGreen
                 .edgesIgnoringSafeArea(.all)
             HStack {
-                VStack {
-                    VStack {
-                        Text(coffee.name)
-                            .font(.custom("FredokaOne-Regular", size: 36))
+                VStack(alignment: .leading) {
+                    Text(coffee.name)
+                        .font(.custom("FredokaOne-Regular", size: 40))
                             .foregroundColor(ColorPalette.headerMint)
-                        Text("\(selections.drinkSizeSelected.rawValue), \(selections.espressoShotsSelected.rawValue) shot")
-                            .font(.system(size: 20, weight: .semibold, design: .rounded))
-                            .foregroundColor(ColorPalette.vistaBlue)
-                    }
+                    Text("\(coffeeSelections.drinkSizeSelected.rawValue), \(coffeeSelections.espressoShotsSelected.rawValue) shot")
+                        .font(.system(size: 20, weight: .semibold, design: .rounded))
+                        .foregroundColor(ColorPalette.vistaBlue)
                     Spacer(minLength: 50)
-
 
                     VStack(alignment: .leading, spacing: 20) {
                         Text("Drink size")
                             .font(.system(size: 32, weight: .semibold, design: .rounded))
-
+                        
+                        // FIXME: Generate Buttons algorithmically
                         HStack(spacing: 40) {
                             Button("small", action: {
-                                self.selections.drinkSizeSelected = .small
+                                self.coffeeSelections.drinkSizeSelected = .small
                             })
                             Button("medium", action: {
-                                self.selections.drinkSizeSelected = .medium
+                                self.coffeeSelections.drinkSizeSelected = .medium
                             })
                             Button("large", action: {
-                                self.selections.drinkSizeSelected = .large
+                                self.coffeeSelections.drinkSizeSelected = .large
                             })
                         }
+                        
 
                         Text("Espresso shots")
                         .font(.system(size: 32, weight: .semibold, design: .rounded))
+                        
+                        // FIXME: Generate Buttons algorithmically
                         HStack(spacing: 40) {
                             Button("single", action: {
-                                self.selections.espressoShotsSelected = .single
+                                self.coffeeSelections.espressoShotsSelected = .single
                             })
                             Button("double", action: {
-                                self.selections.espressoShotsSelected = .double
+                                self.coffeeSelections.espressoShotsSelected = .double
                             })
                             Button("triple", action: {
-                                self.selections.espressoShotsSelected = .triple
+                                self.coffeeSelections.espressoShotsSelected = .triple
                             })
                         }
                         Spacer()
                     }
                     .buttonStyle(CustomButtonStyle())
 
-                    NavigationLink(destination: Results(coffee: coffee, selections: selections)) {
-                        Text("Results")
+                    // Any referenced variables from current the view must be declared as parameters in the destination view
+                    NavigationLink(destination: HealthFactors(coffee: coffee, coffeeSelections: coffeeSelections)) {
+                        Text("Next")
                     }.font(.system(size: 22, weight: .bold, design: .rounded))
+                        .padding(.leading, 115)
                     Spacer(minLength: 100)
                 }
-
             }
-            .padding()
             .font(.system(.body, design: .rounded))
             .foregroundColor(ColorPalette.primaryMint)
         }
@@ -97,19 +102,3 @@ struct CoffeeDetail_Previews: PreviewProvider {
         CoffeeDetail(coffee: coffeeData[0])
     }
 }
-
-
-
-/**
- * All view controllers with a UINavigationBar and its UIBarButtonItems. This is because a UINavigationController is a lot like a stack where you PUSH (showing new view controller)/POP (dismissing view controller) onto the navigation stack.
- 
- Can Setup Navigation Bar
- [UINavigationController]
- - [UIViewController]
- ------ [UIView]
- 
- Can't Setup Navigation Bar
- - [UIViewController]
- ---
- 
- */

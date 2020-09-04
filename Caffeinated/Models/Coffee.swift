@@ -27,9 +27,29 @@ struct Coffee: Hashable, Codable, Identifiable {
     }
 }
 
-struct CaffeineResults: Codable, Hashable  {
-    enum CaffeineAmount: String, CaseIterable, Codable, Hashable {
-        case justRight = "👍", tooMuch = "😰", notEnough = "🥱"
+struct Health: Hashable, Codable {
+    var hoursOfSleep: HoursOfSleep
+    var foodEatenPrior: FoodEatenPrior
+    
+    enum HoursOfSleep: String, CaseIterable, Codable, Hashable {
+        case lessThanAverage = "< 6"
+        case average = "6 - 8"
+        case moreThanAverage = "> 8"
+    }
+    
+    enum FoodEatenPrior: String, CaseIterable, Codable, Hashable {
+        case yes = "Yes"
+        case no = "No"
+        case unsure = "Unsure"
+    }
+}
+
+struct CaffeineResults: Hashable, Codable  {
+    enum CaffeineAmount: String, CaseIterable, Hashable, Codable {
+        case justRight = "👍"
+        case tooMuch = "😰"
+        case notEnough = "🥱"
+        case probablyOkay = "✅"
         
          var caption: String {
             switch self {
@@ -39,6 +59,8 @@ struct CaffeineResults: Codable, Hashable  {
                 return "Too much!"
             case .notEnough:
                 return "Not enough!"
+            case .probablyOkay:
+                return "Probably okay. If symptoms are recurring, then you should adjust your amount of espresso."
             }
         }
     }

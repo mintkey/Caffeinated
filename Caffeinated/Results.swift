@@ -10,18 +10,190 @@ import SwiftUI
 
 struct Results: View {
     var coffee: Coffee
-    @ObservedObject var selections = Selections()
+    @ObservedObject var coffeeSelections = CoffeeSelections()
+    @ObservedObject var healthSelections = HealthSelections()
     @State var resultEmoji: CaffeineResults.CaffeineAmount = .justRight
     
+    // TODO: Refactor this entire function, readability is nearly nonexistent right now
     func calculateResults() {
-        if (selections.drinkSizeSelected == .small && selections.espressoShotsSelected == .double) {
-            resultEmoji = .tooMuch
-        } else if (selections.drinkSizeSelected == .small && selections.espressoShotsSelected == .triple) {
-            resultEmoji = .tooMuch
-        } else if (selections.drinkSizeSelected == .medium && selections.espressoShotsSelected == .triple) {
-            resultEmoji = .tooMuch
-        } else if (selections.drinkSizeSelected == .large && selections.espressoShotsSelected == .single) {
-            resultEmoji = .notEnough
+        if (coffeeSelections.drinkSizeSelected == .small) {
+            if (coffeeSelections.espressoShotsSelected == .single) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .probablyOkay
+                    } else {
+                        resultEmoji = .notEnough
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.tirednessChecked || healthSelections.headacheChecked) {
+                        resultEmoji = .notEnough
+                    } else {
+                        resultEmoji = .justRight
+                    }
+                }
+            } else if (coffeeSelections.espressoShotsSelected == .double) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .tooMuch
+                    } else {
+                        resultEmoji = .probablyOkay
+                    }
+
+                    if (healthSelections.tirednessChecked) {
+                        resultEmoji = .notEnough
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.headacheChecked) {
+                        resultEmoji = .notEnough
+                    } else {
+                        resultEmoji = .justRight
+                    }
+                }
+            } else if (coffeeSelections.espressoShotsSelected == .triple) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .tooMuch
+                    } else {
+                        resultEmoji = .tooMuch
+                    }
+
+                    if (healthSelections.tirednessChecked) {
+                        resultEmoji = .probablyOkay
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.headacheChecked) {
+                        resultEmoji = .notEnough
+                    } else {
+                        resultEmoji = .justRight
+                    }
+                }
+            }
+        } else if (coffeeSelections.drinkSizeSelected == .medium) {
+            if (coffeeSelections.espressoShotsSelected == .single) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .probablyOkay
+                    } else {
+                        resultEmoji = .notEnough
+                    }
+
+                    if (healthSelections.tirednessChecked) {
+                        resultEmoji = .notEnough
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.headacheChecked) {
+                        resultEmoji = .notEnough
+                    } else {
+                        resultEmoji = .justRight
+                    }
+                }
+            } else if (coffeeSelections.espressoShotsSelected == .double) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .probablyOkay
+                    } else {
+                        resultEmoji = .justRight
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.tirednessChecked || healthSelections.headacheChecked) {
+                        resultEmoji = .probablyOkay
+                    } else {
+                        resultEmoji = .justRight
+                    }
+                }
+            } else if (coffeeSelections.espressoShotsSelected == .triple) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .tooMuch
+                    } else {
+                        resultEmoji = .probablyOkay
+                    }
+
+                    if (healthSelections.tirednessChecked) {
+                        resultEmoji = .notEnough
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.headacheChecked) {
+                        resultEmoji = .tooMuch
+                    } else {
+                        resultEmoji = .justRight
+                    }
+               }
+            }
+        } else if (coffeeSelections.drinkSizeSelected == .large) {
+            if (coffeeSelections.espressoShotsSelected == .single) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .justRight
+                    } else {
+                        resultEmoji = .notEnough
+                    }
+
+                    if (healthSelections.tirednessChecked) {
+                        resultEmoji = .notEnough
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.headacheChecked) {
+                        resultEmoji = .notEnough
+                    } else {
+                        resultEmoji = .probablyOkay
+                    }
+                }
+            } else if (coffeeSelections.espressoShotsSelected == .double) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .probablyOkay
+                    } else {
+                        resultEmoji = .justRight
+                    }
+
+                    if (healthSelections.tirednessChecked) {
+                        resultEmoji = .notEnough
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.headacheChecked) {
+                        resultEmoji = .tooMuch
+                    } else {
+                        resultEmoji = .justRight
+                    }
+                }
+            } else if (coffeeSelections.espressoShotsSelected == .triple) {
+                if (healthSelections.hoursOfSleepSelected == .lessThanAverage) {
+                    if (healthSelections.foodEatenPriorSelected == .no) {
+                        resultEmoji = .tooMuch
+                    } else {
+                        resultEmoji = .justRight
+                    }
+
+                    if (healthSelections.tirednessChecked) {
+                        resultEmoji = .notEnough
+                    }
+                } else if (healthSelections.hoursOfSleepSelected == .average || healthSelections.hoursOfSleepSelected == .moreThanAverage) {
+                    if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
+                        resultEmoji = .tooMuch
+                    } else if (healthSelections.headacheChecked) {
+                        resultEmoji = .tooMuch
+                    } else {
+                        resultEmoji = .justRight
+                    }
+                }
+            }
         }
     }
     
@@ -32,9 +204,9 @@ struct Results: View {
             HStack {
                 VStack {
                     Text(coffee.name)
-                        .font(.custom("FredokaOne-Regular", size: 36))
+                        .font(.custom("FredokaOne-Regular", size: 40))
                         .foregroundColor(ColorPalette.headerMint)
-                    Text("\(selections.drinkSizeSelected.rawValue), \(selections.espressoShotsSelected.rawValue) shot")
+                    Text("\(coffeeSelections.drinkSizeSelected.rawValue), \(coffeeSelections.espressoShotsSelected.rawValue) shot")
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .foregroundColor(ColorPalette.vistaBlue)
                     Spacer()
