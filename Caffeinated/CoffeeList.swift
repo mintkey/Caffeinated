@@ -38,7 +38,7 @@ struct CoffeeList: View {
                     CoffeeRow(coffee: coffee)
                 }
             }
-            .navigationBarTitle(Text("Choose a drink"))
+            .navigationBarTitle(Text("Drink selection"))
             .font(.system(.body, design: .rounded))
             .foregroundColor(ColorPalette.primaryMint)
         }

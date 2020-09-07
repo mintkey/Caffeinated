@@ -15,17 +15,6 @@ class CoffeeSelections: ObservableObject {
     @Published var espressoShotsSelected: Coffee.EspressoShots = .single
 }
 
-// TODO: Make custom styling remain on selection, not just on press
-struct CustomButtonStyle: ButtonStyle {
-    func makeBody(configuration: Self.Configuration) -> some View {
-        configuration.label
-            .padding(10)
-            .background(configuration.isPressed ? ColorPalette.gossamer : ColorPalette.elfGreen)
-        .cornerRadius(7)
-            .overlay(configuration.isPressed ? RoundedRectangle(cornerRadius: 7).stroke(ColorPalette.vistaBlue, lineWidth: 1) : RoundedRectangle(cornerRadius: 7).stroke(ColorPalette.elfGreen))
-    }
-}
-
 struct CoffeeDetail: View {
     var coffee: Coffee
     @ObservedObject var coffeeSelections = CoffeeSelections()
@@ -48,48 +37,35 @@ struct CoffeeDetail: View {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("Drink size")
                             .font(.system(size: 32, weight: .semibold, design: .rounded))
-                        
-                        // FIXME: Generate Buttons algorithmically
-                        HStack(spacing: 40) {
-                            Button("small", action: {
-                                self.coffeeSelections.drinkSizeSelected = .small
-                            })
-                            Button("medium", action: {
-                                self.coffeeSelections.drinkSizeSelected = .medium
-                            })
-                            Button("large", action: {
-                                self.coffeeSelections.drinkSizeSelected = .large
-                            })
+                        Picker("Drink size", selection: $coffeeSelections.drinkSizeSelected) {
+                            Text("small").tag(Coffee.DrinkSize.small)
+                            Text("medium").tag(Coffee.DrinkSize.medium)
+                            Text("large").tag(Coffee.DrinkSize.large)
                         }
-                        
 
                         Text("Espresso shots")
                         .font(.system(size: 32, weight: .semibold, design: .rounded))
-                        
-                        // FIXME: Generate Buttons algorithmically
-                        HStack(spacing: 40) {
-                            Button("single", action: {
-                                self.coffeeSelections.espressoShotsSelected = .single
-                            })
-                            Button("double", action: {
-                                self.coffeeSelections.espressoShotsSelected = .double
-                            })
-                            Button("triple", action: {
-                                self.coffeeSelections.espressoShotsSelected = .triple
-                            })
+                        Picker("Espresso shots", selection: $coffeeSelections.espressoShotsSelected) {
+                            Text("single").tag(Coffee.EspressoShots.single)
+                            Text("double").tag(Coffee.EspressoShots.double)
+                            Text("triple").tag(Coffee.EspressoShots.triple)
                         }
                         Spacer()
                     }
-                    .buttonStyle(CustomButtonStyle())
+                    .pickerStyle(SegmentedPickerStyle())
 
                     // Any referenced variables from current the view must be declared as parameters in the destination view
-                    NavigationLink(destination: HealthFactors(coffee: coffee, coffeeSelections: coffeeSelections)) {
-                        Text("Next")
-                    }.font(.system(size: 22, weight: .bold, design: .rounded))
-                        .padding(.leading, 115)
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: HealthFactors(coffee: coffee, coffeeSelections: coffeeSelections)) {
+                            Text("Next")
+                        }.font(.system(size: 22, weight: .bold, design: .rounded))
+                        Spacer()
+                    }
                     Spacer(minLength: 100)
                 }
             }
+            .padding()
             .font(.system(.body, design: .rounded))
             .foregroundColor(ColorPalette.primaryMint)
         }

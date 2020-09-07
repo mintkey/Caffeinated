@@ -195,6 +195,24 @@ struct Results: View {
                 }
             }
         }
+        
+        // Change to switch case
+//        var resultDifference = 0
+//        var resultSum = 0
+//
+//        if (coffeeSelections.drinkSizeSelected == .small) {
+//            resultDifference = 1
+//        }
+//
+//        if (resultSum == 0) {
+//            resultEmoji = .justRight
+//        } else if (resultSum == 1 || resultSum == -1) {
+//            resultEmoji = .probablyOkay
+//        } else if (resultSum >= 2) {
+//            resultEmoji = .notEnough
+//        } else if (resultSum <= -2) {
+//            resultEmoji = .tooMuch
+//        }
     }
     
     var body: some View {

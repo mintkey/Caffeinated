@@ -53,34 +53,22 @@ struct HealthFactors: View {
                     Text("How much sleep did you get last night?")
                     .font(.system(size: 24, weight: .semibold, design: .rounded))
                     
-                    // FIXME: Generate Buttons algorithmically
-                    HStack(spacing: 60) {
-                        Button("< 6", action: {
-                            self.healthSelections.hoursOfSleepSelected = .lessThanAverage
-                        })
-                        Button("6 - 8", action: {
-                            self.healthSelections.hoursOfSleepSelected = .average
-                        })
-                        Button("> 8", action: {
-                            self.healthSelections.hoursOfSleepSelected = .moreThanAverage
-                        })
-                    }.buttonStyle(CustomButtonStyle())
+                    Picker("Amount of sleep", selection: $healthSelections.hoursOfSleepSelected) {
+                        Text("< 6").tag(Health.HoursOfSleep.lessThanAverage)
+                        Text("6 - 8").tag(Health.HoursOfSleep.average)
+                        Text("> 8").tag(Health.HoursOfSleep.moreThanAverage)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                         
-                    // FIXME: Generate Buttons algorithmically
                     Text("Did you eat < 4 hours ago?")
                     .font(.system(size: 24, weight: .semibold, design: .rounded))
                     
-                    HStack(spacing: 70) {
-                        Button("yes", action: {
-                            self.healthSelections.foodEatenPriorSelected = .yes
-                        })
-                        Button("no", action: {
-                            self.healthSelections.foodEatenPriorSelected = .no
-                        })
-                        Button("unsure", action: {
-                            self.healthSelections.foodEatenPriorSelected = .unsure
-                        })
-                    }.buttonStyle(CustomButtonStyle())
+                    Picker("Food eaten prior", selection: $healthSelections.foodEatenPriorSelected) {
+                        Text("yes").tag(Health.FoodEatenPrior.yes)
+                        Text("no").tag(Health.FoodEatenPrior.no)
+                        Text("unsure").tag(Health.FoodEatenPrior.unsure)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                     
                     Text("Are you experiencing any of the following:")
                     .font(.system(size: 24, weight: .semibold, design: .rounded))
@@ -100,10 +88,14 @@ struct HealthFactors: View {
                     }
                     .toggleStyle(CheckboxToggleStyle())
                     
-                    NavigationLink(destination: Results(coffee: coffee, coffeeSelections: coffeeSelections, healthSelections: healthSelections)) {
-                        Text("Results")
-                    }.font(.system(size: 26, weight: .bold, design: .rounded))
-                        .padding(.leading, 125)
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: Results(coffee: coffee, coffeeSelections: coffeeSelections, healthSelections: healthSelections)) {
+                            Text("Results")
+                        }.font(.system(size: 26, weight: .bold, design: .rounded))
+                        Spacer()
+                    }
+                        
                     Spacer()
                 }
                 .padding()

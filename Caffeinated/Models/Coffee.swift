@@ -14,16 +14,20 @@ struct Coffee: Hashable, Codable, Identifiable {
     var drinkSize: DrinkSize
     var espressoShots: EspressoShots
     
-    enum DrinkSize: String, CaseIterable, Codable, Hashable {
+    enum DrinkSize: String, CaseIterable, Codable, Hashable, Identifiable {
         case small = "Small"
         case medium = "Medium"
         case large = "Large"
+        
+        var id: String { self.rawValue }
     }
     
-    enum EspressoShots: String, CaseIterable, Codable, Hashable {
+    enum EspressoShots: String, CaseIterable, Codable, Hashable, Identifiable {
         case single = "Single"
         case double = "Double"
         case triple = "Triple"
+        
+        var id: String { self.rawValue }
     }
 }
 
