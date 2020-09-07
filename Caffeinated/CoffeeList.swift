@@ -18,7 +18,7 @@ struct ColorPalette {
 }
 
 struct CoffeeList: View {
-    /// Workaround initializer for List customization
+    // Workaround initializer for List customization
     init() {
         let elfGreen = UIColor(displayP3Red: 0.09020, green: 0.53333, blue: 0.41961, alpha: 1.0)
         let headerMint = UIColor(displayP3Red: 0.92549, green: 0.99216, blue: 0.96078, alpha: 1.0)
@@ -38,7 +38,7 @@ struct CoffeeList: View {
                     CoffeeRow(coffee: coffee)
                 }
             }
-            .navigationBarTitle(Text("Drink selection"))
+            .navigationBarTitle(Text("Select a drink"))
             .font(.system(.body, design: .rounded))
             .foregroundColor(ColorPalette.primaryMint)
         }

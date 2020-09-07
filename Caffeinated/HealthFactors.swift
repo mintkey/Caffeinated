@@ -11,7 +11,7 @@ import SwiftUI
 // MARK: - ObservableObject
 class HealthSelections: ObservableObject {
     @Published var hoursOfSleepSelected: Health.HoursOfSleep = .average
-    @Published var foodEatenPriorSelected: Health.FoodEatenPrior = .unsure
+    @Published var foodEatenPriorSelected: Health.FoodEatenPrior = .yes
     @Published var anxietyChecked: Bool = false
     @Published var jittersChecked: Bool = false
     @Published var insomniaChecked: Bool = false
@@ -66,7 +66,6 @@ struct HealthFactors: View {
                     Picker("Food eaten prior", selection: $healthSelections.foodEatenPriorSelected) {
                         Text("yes").tag(Health.FoodEatenPrior.yes)
                         Text("no").tag(Health.FoodEatenPrior.no)
-                        Text("unsure").tag(Health.FoodEatenPrior.unsure)
                     }
                     .pickerStyle(SegmentedPickerStyle())
                     
@@ -92,10 +91,10 @@ struct HealthFactors: View {
                         Spacer()
                         NavigationLink(destination: Results(coffee: coffee, coffeeSelections: coffeeSelections, healthSelections: healthSelections)) {
                             Text("Results")
-                        }.font(.system(size: 26, weight: .bold, design: .rounded))
+                        }
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
                         Spacer()
                     }
-                        
                     Spacer()
                 }
                 .padding()

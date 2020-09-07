@@ -29,7 +29,7 @@ struct CoffeeDetail: View {
                     Text(coffee.name)
                         .font(.custom("FredokaOne-Regular", size: 40))
                             .foregroundColor(ColorPalette.headerMint)
-                    Text("\(coffeeSelections.drinkSizeSelected.rawValue), \(coffeeSelections.espressoShotsSelected.rawValue) shot")
+                    Text("What kind of \(coffee.name.lowercased()) are you having today?")
                         .font(.system(size: 20, weight: .semibold, design: .rounded))
                         .foregroundColor(ColorPalette.vistaBlue)
                     Spacer(minLength: 50)

@@ -6,6 +6,17 @@
 //  Copyright © 2020 Helen Dempsey. All rights reserved.
 //
 
+/**
+ README: All integer values assigned to enum cases are to help calculate the results.
+ See also: calculateResults() in Results.swift
+ 
+ Coffee's enums DrinkSize and EspressoShots have values directly correlating to the size and number of shots.
+ 
+ Health's enums' values are assigned based on whether the option means the user needs more or less caffeine, e.g. if the user got less than an average amount of sleep, the user may need more caffeine.
+ 
+ Positive values attribute to not enough, negative values attribute to too much, and 0 (or close to 0) means the amount of caffeine is just right/good enough.
+ */
+
 import SwiftUI
 
 struct Coffee: Hashable, Codable, Identifiable {
@@ -14,20 +25,20 @@ struct Coffee: Hashable, Codable, Identifiable {
     var drinkSize: DrinkSize
     var espressoShots: EspressoShots
     
-    enum DrinkSize: String, CaseIterable, Codable, Hashable, Identifiable {
-        case small = "Small"
-        case medium = "Medium"
-        case large = "Large"
+    enum DrinkSize: Int, CaseIterable, Codable, Hashable, Identifiable {
+        case small = 1
+        case medium = 2
+        case large = 3
         
-        var id: String { self.rawValue }
+        var id: Int { self.rawValue }
     }
     
-    enum EspressoShots: String, CaseIterable, Codable, Hashable, Identifiable {
-        case single = "Single"
-        case double = "Double"
-        case triple = "Triple"
+    enum EspressoShots: Int, CaseIterable, Codable, Hashable, Identifiable {
+        case single = 1
+        case double = 2
+        case triple = 3
         
-        var id: String { self.rawValue }
+        var id: Int { self.rawValue }
     }
 }
 
@@ -35,16 +46,15 @@ struct Health: Hashable, Codable {
     var hoursOfSleep: HoursOfSleep
     var foodEatenPrior: FoodEatenPrior
     
-    enum HoursOfSleep: String, CaseIterable, Codable, Hashable {
-        case lessThanAverage = "< 6"
-        case average = "6 - 8"
-        case moreThanAverage = "> 8"
+    enum HoursOfSleep: Int, CaseIterable, Codable, Hashable {
+        case lessThanAverage = 1
+        case average = 0
+        case moreThanAverage = -1
     }
     
-    enum FoodEatenPrior: String, CaseIterable, Codable, Hashable {
-        case yes = "Yes"
-        case no = "No"
-        case unsure = "Unsure"
+    enum FoodEatenPrior: Int, CaseIterable, Codable, Hashable {
+        case yes = 0
+        case no = -1
     }
 }
 
@@ -64,7 +74,7 @@ struct CaffeineResults: Hashable, Codable  {
             case .notEnough:
                 return "Not enough!"
             case .probablyOkay:
-                return "Probably okay. If symptoms are recurring, then you should adjust your amount of espresso."
+                return "Probably OK."
             }
         }
     }

@@ -1,62 +1,62 @@
 [
     {
         "name": "Coffee",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1001
     },
     {
         "name": "Latte",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1002
     },
     {
         "name": "Macchiato",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1003
     },
     {
         "name": "Cappuccino",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1004
     },
     {
         "name": "Americano",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1005
     },
     {
         "name": "Espresso",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1006
     },
     {
         "name": "Cortado",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1007
     },
     {
         "name": "Flat White",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1008
     },
     {
         "name": "Affogato",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1009
     },
     {
         "name": "Mocha",
-        "espressoShots": "Single",
-        "drinkSize": "Small",
+        "espressoShots": 1,
+        "drinkSize": 1,
         "id": 1010
     }
 ]
