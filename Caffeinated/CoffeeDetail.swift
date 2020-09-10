@@ -8,6 +8,18 @@
 
 import SwiftUI
 
+// Set custom colors of SegmentedPicker using UISegmentedControl
+class CustomSegmentedPicker {
+    init() {
+        let gossamer = UIColor(displayP3Red: 0.204, green: 0.565, blue: 0.475, alpha: 1.0)
+        let primaryMint = UIColor(displayP3Red: 0.827, green: 0.933, blue: 0.886, alpha: 1.0)
+        let vistaBlue = UIColor(displayP3Red: 0.612, green: 0.816, blue: 0.722, alpha: 1.0)
+        UISegmentedControl.appearance().selectedSegmentTintColor = gossamer
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: primaryMint], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: vistaBlue], for: .normal)
+    }
+}
+
 // MARK: - ObservableObject
 // CoffeeSelections class is typed ObservableObject so that mutated variables can be accessed across multiple views
 class CoffeeSelections: ObservableObject {
@@ -17,6 +29,7 @@ class CoffeeSelections: ObservableObject {
 
 struct CoffeeDetail: View {
     var coffee: Coffee
+    let customSegmentedPicker = CustomSegmentedPicker()
     @ObservedObject var coffeeSelections = CoffeeSelections()
     
     var body: some View {

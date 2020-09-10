@@ -18,7 +18,6 @@ struct Results: View {
         let resultDifference = coffeeSelections.drinkSizeSelected.rawValue - coffeeSelections.espressoShotsSelected.rawValue
         var resultSum = resultDifference + healthSelections.hoursOfSleepSelected.rawValue + healthSelections.foodEatenPriorSelected.rawValue
         
-        // FIXME
         if (healthSelections.anxietyChecked || healthSelections.jittersChecked || healthSelections.insomniaChecked || healthSelections.highHeartRateChecked) {
             resultSum += -2
         } else if (healthSelections.headacheChecked || healthSelections.tirednessChecked) {
@@ -64,6 +63,7 @@ struct Results: View {
                 .foregroundColor(ColorPalette.primaryMint)
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

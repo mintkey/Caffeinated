@@ -20,8 +20,8 @@ struct ColorPalette {
 struct CoffeeList: View {
     // Workaround initializer for List customization
     init() {
-        let elfGreen = UIColor(displayP3Red: 0.09020, green: 0.53333, blue: 0.41961, alpha: 1.0)
-        let headerMint = UIColor(displayP3Red: 0.92549, green: 0.99216, blue: 0.96078, alpha: 1.0)
+        let elfGreen = UIColor(displayP3Red: 0.090, green: 0.533, blue: 0.420, alpha: 1.0)
+        let headerMint = UIColor(displayP3Red: 0.925, green: 0.992, blue: 0.961, alpha: 1.0)
         
         UITableView.appearance().backgroundColor = elfGreen
         UITableViewCell.appearance().backgroundColor = elfGreen
