@@ -14,8 +14,6 @@ struct CoffeeRow: View {
     var body: some View {
         HStack {
             Text(coffee.name)
-            .padding()
-            Spacer()
         }
     }
 }
@@ -26,6 +24,6 @@ struct CoffeeRow_Previews: PreviewProvider {
             CoffeeRow(coffee: coffeeData[0])
             CoffeeRow(coffee: coffeeData[1])
         }
-        .previewLayout(.fixed(width: 300, height: 70))
+        .previewLayout(.fixed(width: 300, height: 50))
     }
 }

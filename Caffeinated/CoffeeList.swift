@@ -23,21 +23,23 @@ struct CoffeeList: View {
         let elfGreen = UIColor(displayP3Red: 0.090, green: 0.533, blue: 0.420, alpha: 1.0)
         let headerMint = UIColor(displayP3Red: 0.925, green: 0.992, blue: 0.961, alpha: 1.0)
         
-        UITableView.appearance().backgroundColor = elfGreen
         UITableViewCell.appearance().backgroundColor = elfGreen
+        UITableView.appearance().backgroundColor = elfGreen
         
-        UINavigationBar.appearance().backgroundColor = elfGreen
         UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "FredokaOne-Regular", size: 36)!, .foregroundColor: headerMint]
         UINavigationBar.appearance().titleTextAttributes = [.font: UIFont(name: "FredokaOne-Regular", size: 24)!]
     }
-    
+
     var body: some View {
         NavigationView {
             List(coffeeData) { coffee in
                 NavigationLink(destination: CoffeeDetail(coffee: coffee)) {
                     CoffeeRow(coffee: coffee)
                 }
+                .padding()
+                .background(ColorPalette.elfGreen)
             }
+            .accentColor(ColorPalette.elfGreen)
             .navigationBarTitle(Text("Select a drink"))
             .font(.system(.body, design: .rounded))
             .foregroundColor(ColorPalette.primaryMint)
