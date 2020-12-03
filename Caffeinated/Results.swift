@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Results: View {
     var coffee: Coffee
+    @Environment(\.colorScheme) var colorScheme
     @ObservedObject var coffeeSelections = CoffeeSelections()
     @ObservedObject var healthSelections = HealthSelections()
     @State var resultEmoji: CaffeineResults.CaffeineAmount = .justRight
@@ -36,17 +37,11 @@ struct Results: View {
     }
     
     var body: some View {
-        ZStack {
-            ColorPalette.elfGreen
-                .edgesIgnoringSafeArea(.all)
             HStack {
                 VStack {
                     Text(coffee.name)
-                        .font(.custom("FredokaOne-Regular", size: 40))
-                        .foregroundColor(ColorPalette.headerMint)
-//                    Displays user's selections
-//                        .font(.system(size: 20, weight: .semibold, design: .rounded))
-//                        .foregroundColor(ColorPalette.vistaBlue)
+                        .font(.custom("Big Caslon", size: 40))
+                    
                     Spacer()
                         
                     .onAppear {
@@ -56,15 +51,13 @@ struct Results: View {
                     Text("\(resultEmoji.rawValue)").font(.system(size: 65))
                         .padding()
                     Text("\(resultEmoji.caption)")
-                        .font(.system(size: 24, weight: .regular, design: .rounded))
+                        .font(.custom("Big Caslon", size: 24))
+                    
                     Spacer()
                 }
-                .font(.system(.body, design: .rounded))
-                .foregroundColor(ColorPalette.primaryMint)
             }
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden(true)
-    }
 }
 
 struct Results_Previews: PreviewProvider {

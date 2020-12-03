@@ -8,26 +8,12 @@
 
 import SwiftUI
 
-/// Custom color asset variables
-struct ColorPalette {
-    static let elfGreen = Color("elfGreen")
-    static let headerMint = Color("headerMint")
-    static let primaryMint = Color("primaryMint")
-    static let vistaBlue = Color("vistaBlue")
-    static let gossamer = Color("gossamer")
-}
-
 struct CoffeeList: View {
+    @State var isCoffeeDetailActive: Bool = false
     // Workaround initializer for List customization
     init() {
-        let elfGreen = UIColor(displayP3Red: 0.090, green: 0.533, blue: 0.420, alpha: 1.0)
-        let headerMint = UIColor(displayP3Red: 0.925, green: 0.992, blue: 0.961, alpha: 1.0)
-        
-        UITableViewCell.appearance().backgroundColor = elfGreen
-        UITableView.appearance().backgroundColor = elfGreen
-        
-        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "FredokaOne-Regular", size: 36)!, .foregroundColor: headerMint]
-        UINavigationBar.appearance().titleTextAttributes = [.font: UIFont(name: "FredokaOne-Regular", size: 24)!]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.font: UIFont(name: "Big Caslon", size: 36)!]
+        UINavigationBar.appearance().titleTextAttributes = [.font: UIFont(name: "Big Caslon", size: 24)!]
     }
 
     var body: some View {
@@ -37,12 +23,9 @@ struct CoffeeList: View {
                     CoffeeRow(coffee: coffee)
                 }
                 .padding()
-                .background(ColorPalette.elfGreen)
             }
-            .accentColor(ColorPalette.elfGreen)
             .navigationBarTitle(Text("Select a drink"))
-            .font(.system(.body, design: .rounded))
-            .foregroundColor(ColorPalette.primaryMint)
+            .font(.custom("Big Caslon", size: 18))
         }
     }
 }

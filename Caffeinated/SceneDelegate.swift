@@ -24,9 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: CoffeeList())
             self.window = window
-            
-            // Set tintColor to headerMint
-            self.window?.tintColor = UIColor(displayP3Red: 0.925, green: 0.992, blue: 0.961, alpha: 1.0)
             window.makeKeyAndVisible()
         }
     }
